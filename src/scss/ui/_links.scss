@@ -1,0 +1,45 @@
+/*
+    Links
+*/
+
+a {
+    transition: $transition-duration color $transition-ease;
+    text-decoration: none;
+    @include focus-accessible();
+
+    &,
+    &:visited {
+        color: currentColor;
+    }
+
+    &:not(.btn) {
+        @media (hover: hover) {
+            &:hover {
+                color: $color-blue-100;
+
+                .has--custom-colors main & {
+                    color: var(--color-secondary);
+                }
+            }
+        }
+
+        &:focus {
+            color: $color-blue-100;
+
+            .has--custom-colors main & {
+                color: var(--color-secondary);
+            }
+        }
+    }
+}
+
+.link {
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-color: $color-blue-100;
+    text-underline-offset: 1px;
+
+    .has--custom-colors main & {
+        text-decoration-color: var(--color-secondary);
+    }
+}

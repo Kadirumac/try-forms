@@ -1,0 +1,22 @@
+/*
+    StyleGuide
+
+    TODO: Delete file when Styleguide isn't needed any longer
+*/
+
+.styleguide {
+    display: grid;
+    margin: 128px 0;
+    grid-template-columns: 1fr;
+    gap: 48px 0;
+    justify-items: flex-start;
+
+    hr {
+        display: inline-flex;
+        width: 100%;
+        height: 1px;
+        margin: 64px 0;
+        border: 0;
+        background: $color-white-100;
+    }
+}

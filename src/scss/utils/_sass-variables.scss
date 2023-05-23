@@ -1,0 +1,178 @@
+/*
+    Variables
+
+    Colors
+*/
+
+$color-black-100: #000;
+$color-white-100: #fff;
+
+$color-blue-120: #0177a4;
+$color-blue-110: #0099d3;
+$color-blue-100: #00b9ff;
+$color-blue-90: #5fd3ff;
+$color-blue-80: #89defe;
+$color-blue-gradient: #0df;
+
+$color-purple-120: #1c003d;
+$color-purple-110: #2e0064;
+$color-purple-100: #450095;
+$color-purple-90: #6803dd;
+$color-purple-80: #8b54f6;
+$color-purple-70: #3f4051;
+
+$color-gray-110: #111117;
+$color-gray-100: #1b1b25;
+$color-gray-90: #292937;
+$color-gray-80: #3f4051;
+$color-gray-70: #505270;
+$color-gray-60: #60637e;
+$color-gray-50: #6d708b;
+$color-gray-40: #9699af;
+$color-gray-30: #a7aac0;
+$color-gray-20: #c4c7da;
+$color-gray-10: #e0e2ed;
+
+$color-red-100: #ff1556;
+$color-red-50: transparentize($color-red-100, .5);
+$color-green-110: #52a52a;
+$color-green-100: #72e11a;
+$color-cyan-110: #009388;
+$color-cyan-100: #00b88b;
+$color-darkblue-100: #0147a4;
+$color-darkblue-90: #263fd1;
+$color-orange-100: #df8a17;
+
+/*
+    Variables
+
+    Backgrounds & Gradients
+*/
+
+$gradient-blue-purple-to-top: linear-gradient(0deg, $color-blue-gradient 0%, $color-purple-100 100%);
+$gradient-blue-purple-to-right: linear-gradient(90deg, $color-blue-gradient 0%, $color-purple-100 100%);
+$gradient-blue-purple-to-bottom: linear-gradient(180deg, $color-blue-gradient 0%, $color-purple-100 100%);
+$gradient-blue-purple-to-left: linear-gradient(-90deg, $color-blue-gradient 0%, $color-purple-100 100%);
+
+$gradient-primary-secondary-to-right: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+
+$gradient-gray-darkgray-to-bottom: linear-gradient(180deg, $color-gray-100 0%, $color-gray-110 100%);
+$gradient-gray-transparent-to-right: linear-gradient(90deg, fade-out($color-gray-100, 1) 0%, $color-gray-100 100%);
+$gradient-gray-transparent-to-left: linear-gradient(-90deg, fade-out($color-gray-100, 1) 0%, $color-gray-100 100%);
+
+$gradient-red-gray-to-right: linear-gradient(90deg, $color-red-100 0%, $color-gray-80 100%);
+$gradient-red-gray-to-left: linear-gradient(-90deg, $color-red-100 0%, $color-gray-80 100%);
+
+$gradient-green-green-to-right: linear-gradient(90deg, $color-green-110, $color-green-100 100%);
+
+$gradient-white-gray-to-right: linear-gradient(90deg, $color-white-100 0%, $color-gray-80 100%);
+$gradient-white-gray-to-left: linear-gradient(-90deg, $color-white-100 0%, $color-gray-80 100%);
+
+$smooth-black-transparent-gradient: $color-gray-110, transparentize($color-gray-110, .262) 19%, transparentize($color-gray-110, .459) 34%, transparentize($color-gray-110, .618) 47%, transparentize($color-gray-110, .722) 56.5%, transparentize($color-gray-110, .806) 65%, transparentize($color-gray-110, .874) 73%, transparentize($color-gray-110, .925) 80.2%, transparentize($color-gray-110, .958) 86.1%, transparentize($color-gray-110, .979) 91%, transparentize($color-gray-110, .992) 95.2%, transparentize($color-gray-110, .998) 98.2%, transparent;
+$gradient-black-transparent-to-top: linear-gradient(0deg, $smooth-black-transparent-gradient);
+$gradient-black-transparent-to-right: linear-gradient(90deg, $smooth-black-transparent-gradient);
+$gradient-black-transparent-to-bottom: linear-gradient(180deg, $smooth-black-transparent-gradient);
+$gradient-black-transparent-to-left: linear-gradient(-90deg, $smooth-black-transparent-gradient);
+
+$bg-colors: (
+        'interview': $color-cyan-110,
+        'devinterview': $color-purple-80,
+        'talk': $color-green-110,
+        'trailer': $color-orange-100,
+        'gameplay': $color-blue-110,
+        'letsplay': $color-gray-60,
+        'esport': $color-red-50,
+        'livestream': $color-darkblue-90,
+        'black': $color-black-100,
+        'live': $color-red-100,
+        'featured': #{$gradient-blue-purple-to-left}
+) !default;
+
+/*
+    Variables
+
+    Font Families
+*/
+
+$font-open-sans-400: 'Open Sans 400', sans-serif;
+$font-open-sans-600: 'Open Sans 600', sans-serif;
+$font-open-sans-700: 'Open Sans 700', sans-serif;
+$font-open-sans-800: 'Open Sans 800', sans-serif;
+
+$font-raleway-400: 'Raleway 400', sans-serif;
+$font-raleway-800: 'Raleway 800', sans-serif;
+
+$font-style-subtitle: 400 22px/1.455 $font-raleway-400;
+
+/*
+    Variables
+
+    Transitions
+*/
+
+$transition-duration: var(--transition-duration);
+$transition-ease: cubic-bezier(.25, .61, .355, 1);
+$transition-ease-in-out: cubic-bezier(.22, .68, 0, 1.71);
+
+/*
+    Variables
+
+    Shadows
+*/
+
+$shadow-header: 0 4px 5px 0 transparentize($color-black-100, .86), 0 1px 10px 0 transparentize($color-black-100, .88), 0 2px 4px -1px transparentize($color-black-100, .8);
+$shadow-bottom-bar: 0 -4px 5px 0 transparentize($color-black-100, .86), 0 -1px 10px 0 transparentize($color-black-100, .88), 0 -2px 4px -1px transparentize($color-black-100, .8);
+$shadow-game-editions-card: $shadow-header;
+
+/*
+    Variables
+
+    Paths
+*/
+
+$path-fonts: '/assets/fonts';
+
+/*
+    Variables
+
+    Dimensions
+*/
+
+$dimension-max: 1140px;
+
+$viewport-height: '(var(--viewport-height, 1vh) * 100)';
+
+/*
+    Variables
+
+    Bootstrap
+*/
+
+$grid-columns: 12 !default;
+$grid-gutter-width: 32px !default;
+$grid-breakpoints: (
+        xs: 0,
+        sm: 576px,
+        md: 768px,
+        lg: 992px,
+        xl: 1200px
+) !default;
+
+$container-max-widths: (
+        sm: 576px,
+        md: 720px,
+        lg: 1172px
+) !default;
+
+$spacer: 1rem !default;
+$spacers: (
+        0: 0,
+        1: $spacer / 4,
+        2: $spacer / 2,
+        25: $spacer *4/3,
+        3: $spacer,
+        35: $spacer * 1.25,
+        4: $spacer * 1.5,
+        45: $spacer * 2,
+        5: $spacer * 3,
+) !default;

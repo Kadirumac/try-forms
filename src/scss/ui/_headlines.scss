@@ -1,0 +1,48 @@
+/*
+    Headlines
+*/
+
+.h1, .h2, .h3, .h4, .h5, .h6,
+h1, h2, h3, h4, h5, h6 {
+    font-family: $font-raleway-800;
+    font-weight: 400;
+    margin: 0 0 24px !important;
+
+    &,
+    a {
+        color: $color-white-100;
+    }
+}
+
+.h1, .h2,
+h1, h2 {
+    font-size: 28px;
+    line-height: 1.214;
+
+    @include media-breakpoint-up(lg) {
+        font-size: 34px;
+        line-height: 1.176;
+    }
+}
+
+.h3,
+h3 {
+    font-size: 28px;
+    line-height: 1.214;
+}
+
+.h4,
+h4 {
+    font-size: 22px;
+    line-height: 1.818;
+
+    &.ot-cat-header {
+        margin-bottom: 0 !important;
+    }
+}
+
+.h5, .h6,
+h5, h6 {
+    font-size: 16px;
+    line-height: 1.75;
+}

@@ -1,0 +1,19 @@
+/*
+    Images
+*/
+
+img {
+    object-fit: cover;
+    image-rendering: optimizeQuality;
+    user-select: none;
+
+    &[src$='.gif'] {
+        image-rendering: crisp-edges;
+    }
+}
+
+svg {
+    &:not(:root) {
+        overflow: hidden;
+    }
+}

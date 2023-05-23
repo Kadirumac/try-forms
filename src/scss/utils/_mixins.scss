@@ -1,0 +1,189 @@
+/*
+    Mixins
+
+    Font Face
+    @param {String} $name - name of the font
+    @param {String} $path - path to the font, including name of the file BUT without ending
+    @param {String} $weight - font-weight, optional
+    @param {String} $style - font-style, optional
+    @param {String} $extensions - font file extensions, eg. "eot ttf woff2" or "woff2 woff svg"
+*/
+
+@mixin font-face($name, $path, $weight: null, $style: null, $extensions: eot woff2 woff ttf svg) {
+    $src: null;
+
+    $extmods: (
+            eot: '?',
+            svg: '#' + str-replace($name, ' ', '_')
+    );
+
+    $formats: (
+            otf: 'opentype',
+            ttf: 'truetype'
+    );
+
+    @each $extension in $extensions {
+        $extmod: if(map-has-key($extmods, $extension), $extension + map-get($extmods, $extension), $extension);
+        $format: if(map-has-key($formats, $extension), map-get($formats, $extension), $extension);
+        $src: append($src, url(quote($path + '.' + $extmod)) format(quote($format)), comma);
+    }
+
+    @font-face {
+        font-display: swap;
+        font-weight: $weight;
+        font-family: quote($name);
+        font-style: $style;
+        src: $src;
+    }
+}
+
+/*
+    Mixins
+
+    Font Shorthand
+    @param {String} $font-weight - eg 400, normal, etc
+    @param {String} $font-size - eg 16px, 1em, etc
+    @param {String} $line-height - eg 32px, 1.5, etc
+    @param {String} $font-family - eg Arial, 'Open Sans', eg
+*/
+
+@mixin font($font-weight, $font-size, $line-height, $font-family) {
+    font: $font-weight #{$font-size}/#{$line-height} $font-family;
+}
+
+/*
+    Mixins
+
+    Line Clampin (Truncating Multiple Line Text)
+    @param {Number} $rows - number of shown rows
+*/
+
+@mixin line-clamp($rows) {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: $rows;
+    -webkit-box-orient: vertical;
+}
+
+/*
+    Mixins
+
+    Indicator: Pulsating
+    @param {String} $color - color value of indicator
+    @param {String} $position-top - absolute top position of indicator
+    @param {String} $related-icon-width - width of related icon in px (e.g. 24px)
+*/
+
+@mixin indicator-pulsating($color, $position-top, $related-icon-width) {
+    position: relative;
+
+    &::before,
+    &::after {
+        position: absolute;
+        content: '';
+        transform-origin: 50% 50%;
+        background: $color;
+        border-radius: 50%;
+        pointer-events: none;
+    }
+
+    &::before {
+        top: $position-top;
+        left: calc(50% + (#{$related-icon-width / 2} - 6px));
+        width: 8px;
+        height: 8px;
+        animation: calc(#{$transition-duration} * 16) $transition-ease infinite indicator-pulsating-dot;
+    }
+
+    &::after {
+        top: calc(#{$position-top} + 3px);
+        left: calc(50% + (#{$related-icon-width / 2} - 3px));
+        width: 2px;
+        height: 2px;
+        animation: calc(#{$transition-duration} * 16) $transition-ease calc(#{$transition-duration} * .5) infinite indicator-pulsating-ring;
+    }
+}
+
+/*
+    Mixins
+
+    Accessible Focus Indicator
+    Gets rid of the annoying outline for mouse users but preserves it for keyboard users,
+    and is ignored by browsers tha don't support :focus-visible
+*/
+
+@mixin focus-accessible() {
+    &:focus-visible {
+        outline: 4px solid $color-blue-100;
+    }
+
+    &:focus {
+        &:not(:focus-visible) {
+            outline: 0;
+        }
+    }
+}
+
+/*
+    Mixins
+
+    Gradient Bottom Border for Tabs that is shown and animated on hover / active
+
+    @param {String} $border-width - height of border in px
+*/
+
+@mixin gradient-bottom-border($border-width) {
+    position: relative;
+
+    &::before {
+        position: absolute;
+        right: 0;
+        bottom: -1px;
+        left: 0;
+        height: $border-width;
+        content: '';
+        transition: $transition-duration transform $transition-ease, $transition-duration opacity $transition-ease;
+        transform: scale3d(0, 0, 1);
+        transform-origin: 0 100%;
+        opacity: 0;
+        background: $gradient-blue-purple-to-right;
+        pointer-events: none;
+
+        .has--custom-colors main & {
+            background: $gradient-primary-secondary-to-right;
+        }
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            &::before {
+                transform: scale3d(1, 1, 1);
+                opacity: 1;
+            }
+        }
+    }
+
+    &.active,
+    &.is--active {
+        &::before {
+            transform: scale3d(1, 1, 1);
+            opacity: 1;
+        }
+    }
+}
+
+/*
+    Mixins
+
+    Hide Scrollbars but keep scrollability
+*/
+
+@mixin hide-scrollbars() {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}

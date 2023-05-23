@@ -1,0 +1,237 @@
+/*
+    Inputs
+
+    Wrapper & Hint
+*/
+
+.input {
+    &--wrapper {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+    }
+
+    &--border {
+        position: absolute;
+        top: 47px;
+        right: 0;
+        left: 0;
+        transform: scale3d(0, 1, 1);
+        transform-origin: 0 50%;
+        transition: $transition-duration transform $transition-ease;
+        background: $gradient-blue-purple-to-left;
+        height: 1px;
+
+        .has--custom-colors main & {
+            background: $gradient-primary-secondary-to-right;
+        }
+    }
+
+    &--hint {
+        transition: $transition-duration color $transition-ease;
+        margin: 5px 0 0;
+        line-height: 1.333;
+        font-size: 12px;
+        user-select: none;
+
+        &:empty {
+            display: none;
+        }
+    }
+}
+
+/*
+    Inputs
+
+    Text Inputs & Textarea
+*/
+
+input[type='text'],
+input[type='email'],
+input[type='search'],
+input[type='password'],
+textarea {
+    outline: 0;
+    border: 0;
+    box-shadow: none;
+    background: transparentize($color-black-100, .7);
+    width: 100%;
+    color: $color-white-100;
+    appearance: none;
+    caret-color: $color-gray-30;
+
+    &:not(:disabled) {
+        @media (hover: hover) {
+            &:hover {
+                ~ label {
+                    color: $color-gray-30;
+                }
+            }
+        }
+
+        &:focus {
+            ~ label {
+                transform: translate(-16px, -32px);
+                color: $color-white-100;
+                font-size: 12px;
+            }
+
+            ~ .input--border {
+                transform: scale3d(1, 1, 1);
+            }
+        }
+
+        .is--valid & {
+            ~ .input--border {
+                transform: scale3d(1, 1, 1);
+                background: $color-green-100;
+            }
+
+            ~ .input--hint {
+                color: $color-green-100;
+            }
+        }
+
+        .is--invalid & {
+            ~ .input--border {
+                transform: scale3d(1, 1, 1);
+                background: $color-red-100;
+            }
+
+            ~ .input--hint {
+                color: $color-red-100;
+            }
+        }
+    }
+
+    &:disabled {
+        background: transparentize($color-gray-10, .92);
+        cursor: default;
+        color: $color-gray-50;
+
+        ~ .input--hint {
+            color: $color-gray-50;
+        }
+    }
+
+    &::-ms-clear {
+        display: none;
+    }
+
+    &::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+    }
+
+    &::placeholder {
+        opacity: 0;
+    }
+
+    &:not(:placeholder-shown) {
+        ~ label {
+            transform: translate(-16px, -32px);
+            color: $color-white-100;
+            font-size: 12px;
+        }
+    }
+
+    ~ label {
+        position: absolute;
+        top: 13px;
+        right: 16px;
+        left: 16px;
+        @include line-clamp(1);
+        transition: $transition-duration all $transition-ease;
+        color: $color-gray-50;
+        pointer-events: none;
+    }
+}
+
+/*
+    Inputs
+
+    Text Inputs
+*/
+
+input[type='text'],
+input[type='email'],
+input[type='search'],
+input[type='password'] {
+    padding: 0 16px;
+    line-height: 48px;
+
+    &:not(:disabled) {
+        @media (hover: hover) {
+            &:hover {
+                ~ .icon {
+                    fill: $color-blue-100;
+
+                    .has--custom-colors main & {
+                        fill: var(--color-secondary);
+                    }
+                }
+            }
+        }
+
+        &:focus {
+            ~ .icon {
+                fill: $color-blue-100;
+
+                .has--custom-colors main & {
+                    fill: var(--color-secondary);
+                }
+            }
+        }
+    }
+
+    &:disabled {
+        ~ .icon {
+            fill: $color-gray-50;
+        }
+    }
+
+    .has--icon & {
+        padding-right: 54px;
+
+        ~ label {
+            right: 54px;
+        }
+    }
+
+    ~ .icon {
+        position: absolute;
+        top: 13px;
+        right: 16px;
+    }
+}
+
+/*
+    Inputs
+
+    Input Search
+*/
+
+input[type='search'] {
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-results-button,
+    &::-webkit-search-results-decoration {
+        display: none;
+    }
+}
+
+/*
+    Inputs
+
+    Textarea
+*/
+
+textarea {
+    padding: 13px 16px;
+    height: 128px;
+
+    ~ .input--border {
+        top: unset;
+        bottom: 20px;
+    }
+}

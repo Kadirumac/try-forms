@@ -1,0 +1,47 @@
+@import 'src/scss/sass-dependencies';
+
+.graphcms-image {
+    display: flex;
+
+    @media (hover: hover) {
+        &:hover {
+            .graphcms-image__download {
+                opacity: 1;
+            }
+        }
+    }
+
+    &__download {
+        position: absolute;
+        z-index: 10;
+        right: 0;
+        bottom: 0;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        background: $color-gray-90;
+
+        @media (hover: hover) {
+            transition: $transition-duration background $transition-ease, $transition-duration opacity $transition-ease;
+            opacity: 0;
+
+            &:hover {
+                background: $color-blue-100;
+
+                .has--custom-colors main & {
+                    background: var(--color-primary);
+                }
+            }
+        }
+    }
+
+    &__download-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 20px;
+        height: 20px;
+        transform: translate(-50%, -50%);
+        fill: $color-white-100;
+    }
+}

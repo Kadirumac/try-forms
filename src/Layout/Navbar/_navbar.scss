@@ -1,0 +1,56 @@
+@import '~bootstrap/scss/bootstrap.scss';
+@import "src/variables.scss";
+
+
+.container {
+  max-width: 100vw !important;
+  margin: 0;
+  padding: 0;
+}
+.container .container {
+  padding: 0;
+}
+
+.try-navbar {
+  color: $main-white;
+  height: 100px;
+  background: $main-dark-50;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  padding:0 220px !important;
+
+  @include media-breakpoint-down(lg){
+    height: calc(56px + env(safe-area-inset-top));
+    padding:0 120px !important;
+  }
+
+  &--wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  &--title {
+    font: 700 14px/1 $font-raleway-400;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  &--menu {
+      ul {
+        display: flex;
+        justify-content: space-around;
+
+        li {
+          margin: 0 10px;
+        }
+      }
+  }
+
+  &--search {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+}

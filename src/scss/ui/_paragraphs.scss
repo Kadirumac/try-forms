@@ -1,0 +1,13 @@
+/*
+    Paragraphs
+*/
+
+p {
+    margin: 0 0 22px;
+
+    * > & {
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+}

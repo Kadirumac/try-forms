@@ -1,0 +1,56 @@
+@import 'src/scss/sass-dependencies';
+
+.hero-parent-div {
+    background: grey;
+
+    &--wrapper {
+        position: relative;
+    }
+
+    .hero-image {
+        img {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 0;
+            width: 100%;
+            max-width: none !important;
+            height: 100%;
+            max-height: none !important;
+            object-fit: cover;
+        }
+    }
+
+    .hero-caption {
+        position: relative;
+
+        .hero-caption-subtitle {
+            margin: 0 0 28px;
+            font-size: 22px;
+        }
+
+        .hero-caption-text {
+            margin-bottom: 19px;
+
+            @include media-breakpoint-down(lg) {
+                padding: 0 15px;
+            }
+        }
+
+        .hero-caption-text-no-button {
+            margin-bottom: 0;
+        }
+
+        .hero-caption-button {
+            margin-bottom: -10px;
+
+            .btn {
+                margin: 10px 0;
+
+                @include media-breakpoint-up(lg) {
+                    margin: 10px;
+                }
+            }
+        }
+    }
+}

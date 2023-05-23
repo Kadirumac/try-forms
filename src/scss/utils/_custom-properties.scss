@@ -1,0 +1,17 @@
+/*
+    CSS Custom Properties
+
+    Reduce motion for users who may be sensitive to animated content
+*/
+
+:root {
+    --transition-duration: .2s;
+    --scroll-behavior: smooth;
+    --color-primary: #{$color-blue-100};
+    --color-secondary: #{$color-white-100};
+
+    @media (prefers-reduced-motion: reduce) {
+        --transition-duration: 0s;
+        --scroll-behavior: auto;
+    }
+}

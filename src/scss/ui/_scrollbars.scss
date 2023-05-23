@@ -1,0 +1,41 @@
+/*
+    Scrollbars
+
+    Mozilla Firefox
+*/
+
+* {
+    scrollbar-color: $color-blue-110 $color-gray-110;
+}
+
+/*
+    Scrollbars
+
+    Webkit Browsers (Chrome, Safari, Opera, Edge, etc)
+*/
+
+@include media-breakpoint-up(lg) {
+    * {
+        &::-webkit-scrollbar {
+            width: 14px;
+
+            &-track {
+                border-width: 0;
+                background: $color-gray-110;
+            }
+
+            &-thumb {
+                &:vertical,
+                &:horizontal {
+                    border: 2px solid $color-gray-110;
+                    border-radius: 7px;
+                    background: $color-gray-90;
+
+                    &:hover {
+                        background: $color-blue-100;
+                    }
+                }
+            }
+        }
+    }
+}

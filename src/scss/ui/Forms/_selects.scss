@@ -1,0 +1,100 @@
+/*
+    Selects
+
+    Wrapper & Hint
+*/
+
+.select {
+    &--wrapper {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+    }
+}
+
+select {
+    border: 0;
+    box-shadow: none;
+    background: 0 0;
+    @include focus-accessible();
+    cursor: pointer;
+    color: $color-white-100;
+    appearance: none;
+
+    &.select {
+        order: 20;
+        outline: 0;
+        background: transparentize($color-black-100, .7);
+        padding: 0 54px 0 16px;
+        width: 100%;
+        line-height: 48px;
+
+        &::-ms-expand {
+            display: none;
+        }
+
+        &:not(:disabled) {
+            @media (hover: hover) {
+                &:hover {
+                    ~ .icon {
+                        fill: $color-blue-100;
+
+                        .has--custom-colors main & {
+                            fill: var(--color-secondary);
+                        }
+                    }
+                }
+            }
+
+            &:focus {
+                ~ .icon {
+                    transform: scale3d(1, -1, 1);
+                    fill: $color-blue-100;
+
+                    .has--custom-colors main & {
+                        fill: var(--color-secondary);
+                    }
+                }
+            }
+        }
+
+        &:disabled {
+            background: transparentize($color-gray-10, .92);
+            cursor: default;
+            color: $color-gray-50;
+
+            ~ label {
+                color: $color-gray-50;
+            }
+
+            ~ .icon {
+                fill: $color-gray-50;
+            }
+        }
+
+        option {
+            font-weight: 400;
+        }
+
+        ~ .icon {
+            position: absolute;
+            right: 19px;
+            bottom: 16px;
+            transition: $transition-duration fill $transition-ease,
+            $transition-duration transform $transition-ease;
+            width: 16px;
+            height: 16px;
+            pointer-events: none;
+            fill: currentColor;
+        }
+
+        ~ label {
+            order: 10;
+            @include line-clamp(1);
+            padding: 0 0 4px;
+            color: $color-white-100;
+            font-size: 12px;
+            pointer-events: none;
+        }
+    }
+}

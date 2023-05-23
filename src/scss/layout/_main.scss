@@ -1,0 +1,31 @@
+/*
+    Main
+*/
+
+#app {
+    height: stretch;
+
+    > .s-node {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: stretch
+    }
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    padding: 0 env(safe-area-inset-right) 0 env(safe-area-inset-left);
+
+    .wrapper {
+        position: relative;
+        background: $color-gray-100;
+        overflow: hidden;
+    }
+
+    .navigation-open &,
+    .search-open & {
+        filter: blur(3px);
+    }
+}

@@ -1,0 +1,53 @@
+/*
+    Document
+*/
+
+html,
+body {
+    font: 400 16px/1.375 $font-open-sans-400;
+    float: left;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    color: $color-white-100;
+    background: $color-gray-100;
+    overscroll-behavior: none;
+    font-synthesis: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-feature-settings: 'kern';
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+body {
+    @include media-breakpoint-up(lg) {
+        overflow-y: scroll;
+    }
+}
+
+/*
+    Document
+
+    Global Styles
+*/
+
+* {
+    box-sizing: border-box;
+    scroll-behavior: var(--scroll-behavior);
+}
+
+/*
+    Document
+
+    User Selection & Focus
+*/
+
+::selection {
+    color: $color-white-100;
+    background: $color-blue-120;
+}
